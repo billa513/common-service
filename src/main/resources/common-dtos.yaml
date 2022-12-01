@@ -1,0 +1,73 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "common dtos",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8081",
+      "description": "Local Environment"
+    }
+  ],
+  "paths": {
+    "/sayhello": {
+      "get": {
+        "operationId": "sayHello",
+        "responses": {
+          "200": {
+            "description": "successful",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "TokenRequest": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "Credentials": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/TokenRequest"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "createdDateTime": {
+                "type": "string"
+              },
+              "updatedDateTime": {
+                "type": "string"
+              },
+              "isActive": {
+                "type": "boolean"
+              }
+            }
+          }
+
+        ]
+
+
+      }
+    }
+  }
+}

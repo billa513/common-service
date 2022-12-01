@@ -1,0 +1,26 @@
+openapi: 3.0.1
+info:
+  title: token endpoing
+  version: v1
+servers:
+  - url: http://localhost:8080
+    description: Local Environment
+paths:
+  /getToken:
+    post:
+      operationId: generateJwtToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: 'common-dtos.yaml#/components/schemas/TokenRequest'
+      responses:
+        '200':
+          description: sucessful
+          content:
+            text/plain:
+              schema:
+                $ref: ''
+
+
+
